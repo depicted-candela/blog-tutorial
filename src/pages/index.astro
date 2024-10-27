@@ -1,5 +1,11 @@
 ---
+import type { MainUrlsImp } from '@pageTypes/MainUrls';
 
+export const mainUrlsData: MainUrlsImp = {
+    "home": {title: "Home", route: "/"},
+    "about": {title: "About me with Astro", route: "/about"},
+    "blog": {title: "Astro as content manager", route: "/blog"}
+}
 ---
 
 <html lang="en">
@@ -8,12 +14,12 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{mainUrlsData['home'].title}</title>
 	</head>
 	<body>
-		<a href="/">Home</a>
-		<a href="/about">Who am I?</a>
-		<a href="/blog">Astro as content manager</a>
+        <a href={mainUrlsData['home'].route}>{mainUrlsData['home'].title}</a>
+        <a href={mainUrlsData['about'].route}}>{mainUrlsData['about'].title}</a>
+        <a href={mainUrlsData['blog'].route}}>{mainUrlsData['blog'].title}</a>
 		<h1>Astro</h1>
 		<h1>My Astro site</h1>
 	</body>
