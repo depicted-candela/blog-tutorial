@@ -17,9 +17,11 @@ export const mainUrlsData: MainUrlsImp = {
 		<title>{mainUrlsData['about'].title}</title>
     </head>
     <body>
-        <a href={mainUrlsData['home'].route}>{mainUrlsData['home'].title}</a>
-        <a href={mainUrlsData['about'].route}}>{mainUrlsData['about'].title}</a>
-        <a href={mainUrlsData['blog'].route}}>{mainUrlsData['blog'].title}</a>
+        <div style="display: inline-flex; gap: 1rem;">
+            {Object.keys(mainUrlsData).map((key) => (
+                <a href={mainUrlsData[key].route}>{mainUrlsData[key].title}</a>
+            ))}
+        </div>
 		<h1>{mainUrlsData['about'].title}</h1>
 		<h2>... and my new Astro site!</h2>
         <p>I am working for first time with Astro</p>

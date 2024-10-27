@@ -17,9 +17,11 @@ export const mainUrlsData: MainUrlsImp = {
 		<title>{mainUrlsData['blog'].title}</title>
     </head>
     <body>
-        <a href={mainUrlsData['home'].route}>{mainUrlsData['home'].title}</a>
-        <a href={mainUrlsData['about'].route}}>{mainUrlsData['about'].title}</a>
-        <a href={mainUrlsData['blog'].route}}>{mainUrlsData['blog'].title}</a>
+        <div style="display: inline-flex; gap: 1rem;">
+            {Object.keys(mainUrlsData).map((key) => (
+                <a href={mainUrlsData[key].route}>{mainUrlsData[key].title}</a>
+            ))}
+        </div>
         <h1>A tool to post mathematical content</h1>
         <p>It's amazing how technologies are developed to enhance user and developer experiece. Using Astro I expect to share my knowledge and opinions.</p>
         <p>Astro is extremely powerful because of it's flexible simplicity, for example translating .md files to html for fast content creation with almost zero knowledge. For example the following post:</p>
