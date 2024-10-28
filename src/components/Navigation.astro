@@ -7,7 +7,7 @@ const mainUrlsData: MainUrlsImp = {
     "blog": {title: "Astro as content manager", route: "/blog"}
 }
 ---
-<div style="display: inline-flex; gap: 1rem;">
+<div class="nav-links" style="display: inline-flex; gap: 1rem;">
     {Object.keys(mainUrlsData).map((key) => (
         <a href={mainUrlsData[key].route}>{mainUrlsData[key].title}</a>
     ))}
