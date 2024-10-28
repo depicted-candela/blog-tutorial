@@ -1,11 +1,7 @@
 ---
-import type { MainUrlsImp } from '@pageTypes/MainUrls';
-
-export const mainUrlsData: MainUrlsImp = {
-    "home": {title: "Home", route: "/"},
-    "about": {title: "About me with Astro", route: "/about"},
-    "blog": {title: "Astro as content manager", route: "/blog"}
-}
+import { navigatorUrls } from './../data/navigatorUrls';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <html lang="en">
@@ -14,14 +10,10 @@ export const mainUrlsData: MainUrlsImp = {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{mainUrlsData['blog'].title}</title>
+		<title>{navigatorUrls['blog'].title}</title>
     </head>
     <body>
-        <div style="display: inline-flex; gap: 1rem;">
-            {Object.keys(mainUrlsData).map((key) => (
-                <a href={mainUrlsData[key].route}>{mainUrlsData[key].title}</a>
-            ))}
-        </div>
+        <Header />
         <h1>A tool to post mathematical content</h1>
         <p>It's amazing how technologies are developed to enhance user and developer experiece. Using Astro I expect to share my knowledge and opinions.</p>
         <p>Astro is extremely powerful because of it's flexible simplicity, for example translating .md files to html for fast content creation with almost zero knowledge. For example the following post:</p>
@@ -30,5 +22,6 @@ export const mainUrlsData: MainUrlsImp = {
             <li><a href="/posts/post-2">Post 2</a></li>
             <li><a href="/posts/post-3">Post 3</a></li>
         </ul>
+        <Footer />
     </body>
 </html>

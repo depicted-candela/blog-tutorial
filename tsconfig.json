@@ -7,8 +7,7 @@
       },
     ],
     "paths": {
-      "@pageTypes/*": ["./src/types/pages/*"],
-      "@dataPages/*": ["./src/data/pages/*"]
+      "@pageTypes/*": ["./src/types/pages/*"]
     }
   }
 }

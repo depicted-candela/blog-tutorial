@@ -1,11 +1,21 @@
 ---
-import type { MainUrlsImp } from '@pageTypes/MainUrls';
+import { navigatorUrls } from './../data/navigatorUrls';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Social from '../components/Social.astro';
 
-export const mainUrlsData: MainUrlsImp = {
-    "home": {title: "Home", route: "/"},
-    "about": {title: "About me with Astro", route: "/about"},
-    "blog": {title: "Astro as content manager", route: "/blog"}
-}
+const identity: {[key:string]: string | string[]} = {
+  firstName: "Nicolás",
+  country: "Colombia",
+  occupation: "Geodesist",
+  hobbies: ["Software Engineering", "Poetry", "Free style"],
+};
+
+const skills = ['Java', 'HTML', 'CSS', 'Python', 'TS', 'Cloud'];
+
+const skillColor = "green";
+const fontWeight = "normal";
+const textCase = "uppercase";
 ---
 
 <html lang="en">
@@ -14,17 +24,36 @@ export const mainUrlsData: MainUrlsImp = {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{mainUrlsData['about'].title}</title>
+		<title>{navigatorUrls['about'].title}</title>
+        <style define:vars={{skillColor, fontWeight, textCase}}>
+            h1 {
+              color: purple;
+              font-size: 4rem;
+            }
+            .skill {
+              color: var(--skillColor);
+              font-weight: var(--fontWeight);
+              text-transform: var(--textCase);
+            }
+        </style>
     </head>
     <body>
-        <div style="display: inline-flex; gap: 1rem;">
-            {Object.keys(mainUrlsData).map((key) => (
-                <a href={mainUrlsData[key].route}>{mainUrlsData[key].title}</a>
-            ))}
-        </div>
-		<h1>{mainUrlsData['about'].title}</h1>
+        <Header />
+		<h1>{navigatorUrls['about'].title}</h1>
 		<h2>... and my new Astro site!</h2>
         <p>I am working for first time with Astro</p>
         <p>The web system for educational content will be there soon.</p>
+        <b>About me:</b>
+        <ul>
+            {Object.keys(identity).map((keyword) => (
+                <li>{keyword}: {identity[keyword]}</li>
+            ))}
+        </ul>
+        <p>My skills are:</p>
+        <ul>
+            {skills.map((skill) => <li class="skill">{skill}</li>)}
+        </ul>
+        <Social />
+        <Footer />
     </body>
 </html>
