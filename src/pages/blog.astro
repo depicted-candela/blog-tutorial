@@ -1,8 +1,7 @@
 ---
 import '../styles/global.css';
 import { navigatorUrls } from './../data/navigatorUrls';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <html lang="en">
@@ -13,8 +12,7 @@ import Footer from '../components/Footer.astro';
 		<meta name="generator" content={Astro.generator} />
 		<title>{navigatorUrls['blog'].title}</title>
     </head>
-    <body>
-        <Header />
+    <BaseLayout pageTitle={navigatorUrls['blog'].title}>
         <h1>A tool to post mathematical content</h1>
         <p>It's amazing how technologies are developed to enhance user and developer experiece. Using Astro I expect to share my knowledge and opinions.</p>
         <p>Astro is extremely powerful because of it's flexible simplicity, for example translating .md files to html for fast content creation with almost zero knowledge. For example the following post:</p>
@@ -23,6 +21,5 @@ import Footer from '../components/Footer.astro';
             <li><a href="/posts/post-2">Post 2</a></li>
             <li><a href="/posts/post-3">Post 3</a></li>
         </ul>
-        <Footer />
-    </body>
+    </BaseLayout>
 </html>

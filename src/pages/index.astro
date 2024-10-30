@@ -1,8 +1,7 @@
 ---
 import '../styles/global.css';
 import { navigatorUrls } from './../data/navigatorUrls';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <html lang="en">
@@ -13,10 +12,7 @@ import Footer from '../components/Footer.astro';
 		<meta name="generator" content={Astro.generator} />
 		<title>{navigatorUrls['home'].title}</title>
 	</head>
-	<body>
-        <Header />
-		<h1>Astro</h1>
+	<BaseLayout pageTitle={navigatorUrls['home'].title}>
 		<h1>My Astro site</h1>
-		<Footer />
-	</body>
+	</BaseLayout>
 </html>
