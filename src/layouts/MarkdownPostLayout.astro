@@ -1,24 +1,21 @@
 ---
-import '../styles/markdown.css'
 import postsUrl from '../data/postsUrls';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from './BaseLayout.astro';
 const {frontmatter} = Astro.props;
 ---
-<Header />
-<h1>{frontmatter.title}</h1>
-<p>Written by {frontmatter.author}</p>
-<div class="image-container">
-    <img src={frontmatter.image.url} alt={frontmatter.image.alt}>
-    <div class="text-overlay">
-        <p>Published on: {frontmatter.pubDate.toString().slice(0, 10)}</p>
-        <p>{frontmatter.description}</p>
+<BaseLayout pageTitle={frontmatter.title}>
+    <p>Written by {frontmatter.author}</p>
+    <div class="image-container">
+        <img src={frontmatter.image.url} alt={frontmatter.image.alt}>
+        <div class="text-overlay">
+            <p>Published on: {frontmatter.pubDate.toString().slice(0, 10)}</p>
+            <p>{frontmatter.description}</p>
+        </div>
     </div>
-</div>
-<div class="nav-links" style="display: inline-flex; gap: 1rem;">
-    {Object.keys(postsUrl).map((key) => (
-        <a href={postsUrl[key].route}>{postsUrl[key].title}</a>
-    ))}
-</div>
-<slot />
-<Footer />
+    <div class="nav-links" style="display: inline-flex; gap: 1rem;">
+        {Object.keys(postsUrl).map((key) => (
+            <a href={postsUrl[key].route}>{postsUrl[key].title}</a>
+        ))}
+    </div>
+    <slot />
+</BaseLayout>
