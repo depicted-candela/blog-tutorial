@@ -1,8 +1,30 @@
 ---
-import postsUrl from '../data/postsUrls';
 import BaseLayout from './BaseLayout.astro';
-const {frontmatter} = Astro.props;
+const { frontmatter } = Astro.props;
+const tags = frontmatter.tags;
+const url = frontmatter.url;
+const allPosts = await Astro.glob('../pages/posts/*.md');
+let filteredPosts = allPosts.filter((post) => post.frontmatter.tags.some((e: string) => tags.includes(e)));
+filteredPosts = filteredPosts.filter((post) => post.url != url);
 ---
+<style>
+    a {
+        color: #00539F;
+        text-decoration: none;
+    }
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .tag {
+        margin: 0.25em;
+        border: dotted 1px #a1a1a1;
+        border-radius: .5em;
+        padding: .5em 1em;
+        font-size: 1.15em;
+        background-color: #F8FCFD;
+    }
+</style>
 <BaseLayout pageTitle={frontmatter.title}>
     <p>Written by {frontmatter.author}</p>
     <div class="image-container">
@@ -12,10 +34,8 @@ const {frontmatter} = Astro.props;
             <p>{frontmatter.description}</p>
         </div>
     </div>
-    <div class="nav-links" style="display: inline-flex; gap: 1rem;">
-        {Object.keys(postsUrl).map((key) => (
-            <a href={postsUrl[key].route}>{postsUrl[key].title}</a>
-        ))}
+    <div class="tags">
+        {filteredPosts.map((post) => <p class="tag"><a href={post.url}>{post.frontmatter.title}</a></p>)}
     </div>
     <slot />
 </BaseLayout>
