@@ -11,6 +11,7 @@ const { pageTitle } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
   </head>
   <body>
     <Header />
@@ -19,6 +20,8 @@ const { pageTitle } = Astro.props;
     <Footer />
     <script>
       import "../scripts/menu";
+      import "../scripts/mathJax";
     </script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js" defer></script> -->
   </body>
 </html>
