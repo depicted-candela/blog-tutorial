@@ -4,5 +4,5 @@ export const identity: {[key:string]: string | string[]} = {
   firstName: "Nicolás",
   country: "Colombia",
   occupation: "Geodesist",
-  hobbies: ["Software Engineering", "Poetry", "Free style"],
+  hobbies: ["Math", "Software Engineering", "Poetry", "Free style"],
 };

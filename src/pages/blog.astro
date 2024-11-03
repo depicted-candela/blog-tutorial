@@ -1,11 +1,11 @@
 ---
+import { getCollection } from "astro:content";
 import '../styles/global.css';
 import { navigatorUrls } from './../data/navigatorUrls';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogPost from '../components/BlogPost.astro';
-const allPosts = await Astro.glob('./posts/*.md');
+const allPosts = await getCollection("posts");
 ---
-
 <html lang="en">
     <head>
 		<meta charset="utf-8" />
@@ -19,7 +19,12 @@ const allPosts = await Astro.glob('./posts/*.md');
         <p>It's amazing how technologies are developed to enhance user and developer experiece. Using Astro I expect to share my knowledge and opinions.</p>
         <p>Astro is extremely powerful because of it's flexible simplicity, for example translating .md files to html for fast content creation with almost zero knowledge. For example the following post:</p>
         <ul>
-            {allPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title}/>)}
+            {
+                allPosts.map((post) => (
+                        <BlogPost url={`/posts/${post.slug}`} title={post.data.title}/>
+                    )
+                )
+            }
         </ul>
     </BaseLayout>
 </html>

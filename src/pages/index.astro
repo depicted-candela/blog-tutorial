@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { navigatorUrls } from './../data/navigatorUrls';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Greeting from '../components/Greeting';
 ---
 
 <html lang="en">
@@ -14,5 +15,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	</head>
 	<BaseLayout pageTitle={navigatorUrls['home'].title}>
 		<h1>My Astro site</h1>
+		<Greeting client:load messages={["Hej", "Hello", "Howdy", "Hey there"]}/>
 	</BaseLayout>
 </html>

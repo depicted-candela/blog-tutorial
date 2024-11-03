@@ -94,3 +94,12 @@ h1 {
     text-align: center;
     border-radius: 5px;
 }
+
+html.dark {
+    background-color: #0d0950;
+    color: #fff;
+}
+  
+.dark .nav-links a {
+    color: #fff;
+}
